@@ -40,7 +40,7 @@ public class LoginController {
         boolean isValidUser = validateUser(name, password);
 
         if (!isValidUser) {
-            model.put("errorMessage", "Invalid Credentials");
+            model.put("errorMessages", "Invalid Credentials");
             return "login";
         }
 
