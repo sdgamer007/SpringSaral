@@ -14,47 +14,48 @@ public class UserLocationDesignation {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="user_loc_desig_id")
-	private Integer user_loc_desig_id;
+	private Integer userLocDesigId;
 	
 	@Column(name="designation_id")
-	private Integer designation_id;
+	private Integer designationId;
 	
 	@Column(name="designation_name")
-	private String designation_name;
+	private String designationName;
 	
 	@Column(name="user_loc_id")
-	private Integer user_loc_id;
+	private Integer userLocId;
 
-	public Integer getUser_loc_desig_id() {
-		return user_loc_desig_id;
+	public Integer getUserLocDesigId() {
+		return userLocDesigId;
 	}
 
-	public void setUser_loc_desig_id(Integer user_loc_desig_id) {
-		this.user_loc_desig_id = user_loc_desig_id;
+	public void setUserLocDesigId(Integer userLocDesigId) {
+		this.userLocDesigId = userLocDesigId;
 	}
 
-	public Integer getDesignation_id() {
-		return designation_id;
+	public Integer getDesignationId() {
+		return designationId;
 	}
 
-	public void setDesignation_id(Integer designation_id) {
-		this.designation_id = designation_id;
+	public void setDesignationId(Integer designationId) {
+		this.designationId = designationId;
 	}
 
-	public String getDesignation_name() {
-		return designation_name;
+	public String getDesignationName() {
+		return designationName;
 	}
 
-	public void setDesignation_name(String designation_name) {
-		this.designation_name = designation_name;
+	public void setDesignationName(String designationName) {
+		this.designationName = designationName;
 	}
 
-	public Integer getUser_loc_id() {
-		return user_loc_id;
+	public Integer getUserLocId() {
+		return userLocId;
 	}
 
-	public void setUser_loc_id(Integer user_loc_id) {
-		this.user_loc_id = user_loc_id;
+	public void setUserLocId(Integer userLocId) {
+		this.userLocId = userLocId;
 	}
 
+	
 }

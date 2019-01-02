@@ -4,8 +4,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.springjpa.model.LoginData;
 
-public interface LoginService extends JpaRepository<LoginData, String > {
-
-	
-
+public interface LoginRepository extends JpaRepository<LoginData, String > {
 }

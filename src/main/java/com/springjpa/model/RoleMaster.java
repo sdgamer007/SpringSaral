@@ -13,51 +13,48 @@ import javax.persistence.Table;
 public class RoleMaster {
 	
 	
-/*    role_id integer NOT NULL,
-    role_name character varying(100) COLLATE "default".pg_catalog,
-    sign_role character varying(10) COLLATE "default".pg_catalog,
-    CONSTRAINT role_master_pkey PRIMARY KEY (role_id)*/
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer role_id;
+	@Column(name="role_id")
+	private Integer roleId;
 	
 	@Column(name="role_name")
-	private String role_name;
+	private String roleName;
 	
 	@Column(name="sign_role")
-	private String sign_role;
+	private String signRole;
 
-	public Integer getRole_id() {
-		return role_id;
+	public Integer getRoleId() {
+		return roleId;
 	}
 
-	public void setRole_id(Integer role_id) {
-		this.role_id = role_id;
+	public void setRoleId(Integer roleId) {
+		this.roleId = roleId;
 	}
 
-	public String getRole_name() {
-		return role_name;
+	public String getRoleName() {
+		return roleName;
 	}
 
-	public void setRole_name(String role_name) {
-		this.role_name = role_name;
+	public void setRoleName(String roleName) {
+		this.roleName = roleName;
 	}
 
-	public String getSign_role() {
-		return sign_role;
+	public String getSignRole() {
+		return signRole;
 	}
 
-	public void setSign_role(String sign_role) {
-		this.sign_role = sign_role;
+	public void setSignRole(String signRole) {
+		this.signRole = signRole;
 	}
 
 	@Override
 	public String toString() {
-		return "RoleMaster [role_id=" + role_id + ", role_name=" + role_name + ", sign_role=" + sign_role + "]";
+		return "RoleMaster [role_id=" + roleId + ", roleName=" + roleName + ", signRole=" + signRole + "]";
 	}
-	
-	
+
+
 	
 	
 }

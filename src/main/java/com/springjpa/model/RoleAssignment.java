@@ -14,45 +14,44 @@ public class RoleAssignment {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "user_id")
-	private Integer user_id;
+	private Integer userId;
 
-	@Column(name = "role_id" , nullable = false)
-	private Integer role_id; // integer NOT NULL,
+	@Column(name = "roleId" , nullable = false)
+	private Integer roleId; // integer NOT NULL,
 	@Column(name = "user_role_id",  nullable = false)
-	private Long user_role_id; // bigint NOT NULL,
+	private Long useRoleId; // bigint NOT NULL,
 	@Column(name = "user_loc_id")
-	private Long user_loc_id; // bigint,
-
-	public Integer getUser_id() {
-		return user_id;
+	private Long userLocId; // bigint,
+	public Integer getUserId() {
+		return userId;
+	}
+	public void setUserId(Integer userId) {
+		this.userId = userId;
+	}
+	public Integer getRoleId() {
+		return roleId;
+	}
+	public void setRoleId(Integer roleId) {
+		this.roleId = roleId;
+	}
+	public Long getUseRoleId() {
+		return useRoleId;
+	}
+	public void setUseRoleId(Long useRoleId) {
+		this.useRoleId = useRoleId;
+	}
+	public Long getUserLocId() {
+		return userLocId;
+	}
+	public void setUserLocId(Long userLocId) {
+		this.userLocId = userLocId;
+	}
+	@Override
+	public String toString() {
+		return "RoleAssignment [userId=" + userId + ", roleId=" + roleId + ", useRoleId=" + useRoleId + ", userLocId="
+				+ userLocId + "]";
 	}
 
-	public void setUser_id(Integer user_id) {
-		this.user_id = user_id;
-	}
 
-	public Integer getRole_id() {
-		return role_id;
-	}
-
-	public void setRole_id(Integer role_id) {
-		this.role_id = role_id;
-	}
-
-	public Long getUser_role_id() {
-		return user_role_id;
-	}
-
-	public void setUser_role_id(Long user_role_id) {
-		this.user_role_id = user_role_id;
-	}
-
-	public Long getUser_loc_id() {
-		return user_loc_id;
-	}
-
-	public void setUser_loc_id(Long user_loc_id) {
-		this.user_loc_id = user_loc_id;
-	}
 
 }
