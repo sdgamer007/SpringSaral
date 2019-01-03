@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.springjpa.model.LoginData;
+import com.springjpa.model.ServiceMaster;
 import com.springjpa.service.LoginService;
+import com.springjpa.service.ServiceMasterService;
 import com.springjpa.service.impl.LoginServiceImpl;
 
 @Transactional
@@ -28,6 +30,9 @@ public class LoginController {
 
 	@Autowired
 	private LoginService loginService;
+	
+	@Autowired
+	private ServiceMasterService  serviceMasterService;
 
 	@RequestMapping(value = { "/login", "/" }, method = RequestMethod.GET)
 	public String showLoginPage(ModelMap model) {
@@ -36,12 +41,11 @@ public class LoginController {
 	}
 
 	@RequestMapping(value = { "/login", "/" }, method = RequestMethod.POST)
-	public String showWelcomePage(ModelMap model, @RequestParam String name, @RequestParam String password) {
-		List<LoginData> list = loginService.findByUserNameAndPasswd(name, password);
-		System.out.println(list);
+	public String showWelcomePage(ModelMap model, @RequestParam String signNo, @RequestParam String password) {
+				
 
-		List<Object[]> values = validateUser(name, password);
-		if (name.equals(null) || name == "") {
+		List<Object[]> values = validateUser(signNo, password);
+		if (signNo.equals(null) || signNo == "") {
 
 			System.out.println("here123");
 			model.put("nameErrorMessage", "UserName cannnot be empty");
@@ -53,20 +57,20 @@ public class LoginController {
 			System.out.println("here123");
 			model.put("passwordErrorMessage", "Password cannnot be empty");
 			return "login";
-		} else if (values.size() == 0 || !values.get(2).equals(name)) {
-			System.out.println("here");
-			model.put("errorMessage", "Invalid Credentials");
-			return "login";
-
-		}
-
-		model.put("name", name);
+		} /*
+			 * else if (values.size() == 0 || (!values.get(0).equals(signNo))) {
+			 * System.out.println("here" + !values.get(0).equals(signNo));
+			 * model.put("errorMessage", "Invalid Credentials"); return "login";
+			 * 
+			 * }
+			 */
+		model.put("signNo", signNo);
 		model.put("password", password);
-
+		
 		return "welcome";
 	}
 
-	private List<Object[]> validateUser(String username, String password) {
+	private List<Object[]> validateUser(String signNo, String password) {
 		// TODO Auto-generated method stub'
 
 		String queryStr = "SELECT loginData.signNo,loginData.userId,loginData.userName,"
@@ -76,12 +80,16 @@ public class LoginController {
 				+ " RoleMaster roleMaster, UserLocation userLocation,UserLocationDesignation userLocationDesignation"
 				+ " WHERE (loginData.userId = roleAssignment.userId) AND (roleAssignment.roleId =  roleMaster.roleId)"
 				+ " AND (loginData.userId = userLocation.userId) AND (userLocation.userLocId = userLocationDesignation.userLocId)"
-				+ " AND loginData.signNo ='" + username + "'  AND loginData.passwd= '" + password + "' ";
+				+ " AND loginData.signNo ='" + signNo + "'  AND loginData.passwd= '" + password + "' ";
 
 		try {
 			@SuppressWarnings("unchecked")
 			List<Object[]> results = manager.createQuery(queryStr).getResultList();
-
+			List<LoginData> data = loginService.findBySignNoAndPasswd(signNo, password);
+			List<ServiceMaster> values = serviceMasterService.findByDeptCode("727");
+			System.out.println(values.get(0).getDeptCode());
+			
+			System.out.println(data);
 			return results;
 
 		} catch (Exception e) {

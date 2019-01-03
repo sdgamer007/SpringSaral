@@ -15,8 +15,8 @@ public class LoginServiceImpl implements LoginService  {
 	LoginRepository repository;
 
 	@Override
-	public List<LoginData> findByUserNameAndPasswd(String username, String passwd) {
-		List<LoginData> list = repository.findAll();
+	public List<LoginData> findBySignNoAndPasswd(String username, String passwd) {
+		List<LoginData> list = repository.findBySignNoAndPasswd(username, passwd) ;
 		return list;
 	}
 

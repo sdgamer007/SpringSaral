@@ -6,5 +6,5 @@ import com.springjpa.model.LoginData;
 
 public interface LoginService   {
 	
-	List<LoginData> findByUserNameAndPasswd(String username , String passwd);
+	List<LoginData> findBySignNoAndPasswd(String signNo , String passwd);
 	}
